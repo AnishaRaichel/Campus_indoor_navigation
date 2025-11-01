@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Diet Optimization Graph</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.21.1/cytoscape.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+        }
+        #cy {
+            width: 80%;
+            height: 500px;
+            margin: auto;
+            border: 2px solid white;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>🍎 Interactive Diet Optimization Graph 🍏</h1>
+    <p>Explore food connections and optimized diet plans using shortest path analysis.</p>
+    <div id="cy"></div>
+    <script>
+        let cy = cytoscape({
+            container: document.getElementById('cy'),
+            elements: [
+                { data: { id: 'A', label: '🥦 Food A' } },
+                { data: { id: 'B', label: '🍞 Food B' } },
+                { data: { id: 'C', label: '🍎 Food C' } },
+                { data: { id: 'D', label: '🥩 Food D' } },
+                { data: { id: 'E', label: '🧀 Food E' } },
+                { data: { id: 'AB', source: 'A', target: 'B', weight: 3 } },
+                { data: { id: 'AD', source: 'A', target: 'D', weight: 7 } },
+                { data: { id: 'AE', source: 'A', target: 'E', weight: 5 } },
+                { data: { id: 'BC', source: 'B', target: 'C', weight: 2 } },
+                { data: { id: 'BE', source: 'B', target: 'E', weight: 6 } },
+                { data: { id: 'CD', source: 'C', target: 'D', weight: 4 } },
+                { data: { id: 'DE', source: 'D', target: 'E', weight: 3 } }
+            ],
+            style: [
+                {
+                    selector: 'node',
+                    style: {
+                        'background-color': '#ff9800',
+                        'label': 'data(label)',
+                        'color': 'white',
+                        'font-size': '18px',
+                        'text-valign': 'center',
+                        'text-outline-width': 2,
+                        'text-outline-color': '#ff9800',
+                        'width': 60,
+                        'height': 60
+                    }
+                },
+                {
+                    selector: 'edge',
+                    style: {
+                        'width': 3,
+                        'line-color': '#673ab7',
+                        'target-arrow-color': '#673ab7',
+                        'target-arrow-shape': 'triangle',
+                        'curve-style': 'bezier',
+                        'label': 'data(weight)',
+                        'font-size': '14px',
+                        'color': 'black',
+                        'text-background-opacity': 1,
+                        'text-background-color': 'white',
+                        'text-border-width': 2,
+                        'text-border-color': '#673ab7'
+                    }
+                }
+            ],
+            layout: {
+                name: 'concentric',
+                concentric: function( node ){
+                    return node.degree();
+                },
+                levelWidth: function( nodes ){ return 2; },
+                animate: true
+            }
+        });
+    </script>
+</body>
+</html>
