@@ -22,19 +22,19 @@ An interactive web-based college navigation system built using **React** and **N
 
 ## 📁 Project Structure
 Campus-Navigation/
-│
-├── backend/ # Node.js server and API logic
-├── public/ # Static assets and index.html
-├── src/ # React source files
-│ ├── App.js # Main application component
-│ ├── Clgmap.js # Map rendering logic
-│ ├── CollegeMap.js # Multi-floor map view
-│ ├── index.js # React DOM renderer
-│
-├── package.json # Project dependencies
-├── package-lock.json
-└── README.md # Project documentation
+
+ ─ backend/ # Node.js server and API logic
+ ─ public/ # Static assets and index.html
+ ─ src/ # React source files
+  ─ ─ App.js # Main application component
+  ─ ─ Clgmap.js # Map rendering logic
+  ─ ─ CollegeMap.js # Multi-floor map view
+  ─ ─ index.js # React DOM renderer
+ ─ package.json # Project dependencies
+ ─ package-lock.json
+ ─ README.md # Project documentation
 
 ---
+
 
 
